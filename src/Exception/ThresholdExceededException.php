@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace webignition\WaitFor\Exception;
 
-class FooException extends \Exception
+class ThresholdExceededException extends \Exception
 {
     public function __construct(
         public readonly int $waitThresholdInSeconds,
