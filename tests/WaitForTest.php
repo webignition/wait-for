@@ -34,7 +34,6 @@ class WaitForTest extends TestCase
         self::assertSame(100000, $duration);
     }
 
-
     public function testWaitThresholdExceeded(): void
     {
         self::expectException(ThresholdExceededException::class);
