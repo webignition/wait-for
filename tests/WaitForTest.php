@@ -22,6 +22,19 @@ class WaitForTest extends TestCase
         self::expectNotToPerformAssertions();
     }
 
+    public function testWaitForReturnsDuration(): void
+    {
+        $duration = new WaitFor()->waitFor(
+            30,
+            function () {
+                return true;
+            }
+        );
+
+        self::assertSame(100000, $duration);
+    }
+
+
     public function testWaitThresholdExceeded(): void
     {
         self::expectException(ThresholdExceededException::class);

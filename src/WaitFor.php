@@ -19,7 +19,7 @@ final readonly class WaitFor
         int $waitThresholdInSeconds,
         callable $checkCondition,
         ?string $action = null,
-    ): void {
+    ): int {
         $waitThreshold = self::MICROSECONDS_PER_SECOND * $waitThresholdInSeconds;
         $totalWaitTime = 0;
         $period = (int) (self::MICROSECONDS_PER_SECOND * 0.1);
@@ -36,5 +36,7 @@ final readonly class WaitFor
         if ($totalWaitTime >= $waitThreshold) {
             throw new ThresholdExceededException($waitThreshold, $action);
         }
+
+        return $totalWaitTime;
     }
 }
